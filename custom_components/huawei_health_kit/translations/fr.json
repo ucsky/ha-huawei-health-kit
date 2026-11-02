@@ -1,0 +1,102 @@
+{
+  "application_credentials": {
+    "description": "Créez une app dans la [console HUAWEI Developers]({console_url}), activez HUAWEI ID et Health Kit, et ajoutez `{redirect_url}` comme URL de redirection. Saisissez ensuite son client ID (App ID) et son client secret (App secret). Voir le [guide d'installation]({docs_url})."
+  },
+  "config": {
+    "step": {
+      "user": {
+        "title": "Données à lire",
+        "description": "Ne choisissez que ce que votre app HUAWEI Developers a obtenu : une catégorie dont le scope n'a pas été accordé est ignorée.",
+        "data": {
+          "categories": "Catégories"
+        }
+      },
+      "pick_implementation": {
+        "title": "Choisir la méthode d'authentification"
+      },
+      "reauth_confirm": {
+        "title": "Réauthentification",
+        "description": "Huawei demande une nouvelle connexion."
+      }
+    },
+    "abort": {
+      "already_configured": "Ce compte Huawei est déjà configuré.",
+      "missing_credentials": "Ajoutez d'abord les identifiants de votre app HUAWEI Developers.",
+      "missing_configuration": "L'intégration n'est pas configurée.",
+      "authorize_url_timeout": "Délai dépassé pour générer l'URL d'autorisation.",
+      "oauth_error": "Huawei a renvoyé un jeton invalide.",
+      "oauth_failed": "Erreur lors de l'obtention du jeton d'accès.",
+      "oauth_timeout": "Délai dépassé pour obtenir le jeton OAuth.",
+      "oauth_unauthorized": "Erreur d'autorisation OAuth.",
+      "user_rejected_authorize": "L'autorisation a été refusée.",
+      "no_user_id": "Huawei n'a pas renvoyé d'identifiant utilisateur (le scope openid est requis).",
+      "wrong_account": "Vous vous êtes connecté avec un autre compte Huawei.",
+      "reauth_successful": "Réauthentification réussie."
+    },
+    "create_entry": {
+      "default": "Connecté. L'historique est importé en arrière-plan."
+    }
+  },
+  "selector": {
+    "categories": {
+      "options": {
+        "activity": "Activité (pas, distance, calories)",
+        "weight": "Poids",
+        "heart_rate": "Fréquence cardiaque (soumis à validation)",
+        "sleep": "Sommeil (soumis à validation)",
+        "stress": "Stress (soumis à validation)",
+        "spo2": "SpO2 (soumis à validation)",
+        "body_temperature": "Température corporelle (soumis à validation)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "steps": {
+        "name": "Pas"
+      },
+      "distance": {
+        "name": "Distance"
+      },
+      "calories": {
+        "name": "Calories brûlées"
+      },
+      "weight": {
+        "name": "Poids"
+      },
+      "heart_rate": {
+        "name": "Fréquence cardiaque"
+      },
+      "resting_heart_rate": {
+        "name": "Fréquence cardiaque au repos"
+      },
+      "stress": {
+        "name": "Stress"
+      },
+      "spo2": {
+        "name": "SpO2"
+      },
+      "body_temperature": {
+        "name": "Température corporelle"
+      },
+      "sleep_total": {
+        "name": "Sommeil"
+      },
+      "sleep_deep": {
+        "name": "Sommeil profond"
+      },
+      "sleep_light": {
+        "name": "Sommeil léger"
+      },
+      "sleep_rem": {
+        "name": "Sommeil paradoxal"
+      },
+      "sleep_awake": {
+        "name": "Temps éveillé"
+      },
+      "sleep_wakeup_count": {
+        "name": "Réveils"
+      }
+    }
+  }
+}

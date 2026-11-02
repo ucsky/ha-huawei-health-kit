@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Never commit credentials or Home Assistant data
+.env
+.env.*
+*.pem
+*.key
+secrets*.yaml
+secrets*.json
+*token*.json
+.storage/
+home-assistant_v2.db*
+*.log

@@ -1,0 +1,102 @@
+{
+  "application_credentials": {
+    "description": "Create an app in the [HUAWEI Developers console]({console_url}), enable HUAWEI ID and Health Kit, and add `{redirect_url}` as redirect URL. Then enter its client ID (App ID) and client secret (App secret). See the [setup guide]({docs_url})."
+  },
+  "config": {
+    "step": {
+      "user": {
+        "title": "Data to read",
+        "description": "Only pick what your Huawei Developers app was granted: a category whose scope was not granted is ignored.",
+        "data": {
+          "categories": "Categories"
+        }
+      },
+      "pick_implementation": {
+        "title": "Pick authentication method"
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate",
+        "description": "Huawei needs you to sign in again."
+      }
+    },
+    "abort": {
+      "already_configured": "This Huawei account is already configured.",
+      "missing_credentials": "Add the application credentials of your Huawei Developers app first.",
+      "missing_configuration": "The integration is not configured.",
+      "authorize_url_timeout": "Timeout generating the authorize URL.",
+      "oauth_error": "Huawei returned an invalid token.",
+      "oauth_failed": "Error while obtaining the access token.",
+      "oauth_timeout": "Timeout resolving the OAuth token.",
+      "oauth_unauthorized": "OAuth authorization error.",
+      "user_rejected_authorize": "Authorization was refused.",
+      "no_user_id": "Huawei did not return a user id (the openid scope is required).",
+      "wrong_account": "You signed in with another Huawei account.",
+      "reauth_successful": "Re-authentication successful."
+    },
+    "create_entry": {
+      "default": "Connected. The history is imported in the background."
+    }
+  },
+  "selector": {
+    "categories": {
+      "options": {
+        "activity": "Activity (steps, distance, calories)",
+        "weight": "Weight",
+        "heart_rate": "Heart rate (restricted)",
+        "sleep": "Sleep (restricted)",
+        "stress": "Stress (restricted)",
+        "spo2": "SpO2 (restricted)",
+        "body_temperature": "Body temperature (restricted)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "steps": {
+        "name": "Steps"
+      },
+      "distance": {
+        "name": "Distance"
+      },
+      "calories": {
+        "name": "Calories burnt"
+      },
+      "weight": {
+        "name": "Weight"
+      },
+      "heart_rate": {
+        "name": "Heart rate"
+      },
+      "resting_heart_rate": {
+        "name": "Resting heart rate"
+      },
+      "stress": {
+        "name": "Stress"
+      },
+      "spo2": {
+        "name": "SpO2"
+      },
+      "body_temperature": {
+        "name": "Body temperature"
+      },
+      "sleep_total": {
+        "name": "Sleep"
+      },
+      "sleep_deep": {
+        "name": "Deep sleep"
+      },
+      "sleep_light": {
+        "name": "Light sleep"
+      },
+      "sleep_rem": {
+        "name": "REM sleep"
+      },
+      "sleep_awake": {
+        "name": "Awake time"
+      },
+      "sleep_wakeup_count": {
+        "name": "Wake-ups"
+      }
+    }
+  }
+}
