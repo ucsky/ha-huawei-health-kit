@@ -9,9 +9,11 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers.storage import Store
 
 from .api import HealthKitApi
-from .coordinator import HealthKitCoordinator
+from .const import DOMAIN
+from .coordinator import STORE_VERSION, HealthKitCoordinator
 
 PLATFORMS = [Platform.SENSOR]
 
@@ -44,3 +46,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: HealthKitConfigEntry) ->
 
 async def async_unload_entry(hass: HomeAssistant, entry: HealthKitConfigEntry) -> bool:
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+
+
+async def async_remove_entry(hass: HomeAssistant, entry: HealthKitConfigEntry) -> None:
+    """Delete the stored daily history when the entry is removed (see the privacy policy)."""
+    await Store(hass, STORE_VERSION, f"{DOMAIN}.{entry.entry_id}").async_remove()

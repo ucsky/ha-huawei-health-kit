@@ -14,3 +14,4 @@ secrets*.json
 .storage/
 home-assistant_v2.db*
 *.log
+probe-output/

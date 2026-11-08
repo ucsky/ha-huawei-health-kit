@@ -62,6 +62,20 @@ the app is only used by you, and Health Kit's *test permission* allows up to 100
    *Settings → Devices & services → Add integration → Huawei Health (Health Kit)*. Enter the App
    ID and App secret, pick the categories, and sign in with your HUAWEI ID.
 
+## Testing against the live API (developers)
+
+`tools/probe.py` checks the Health Kit API outside Home Assistant (standard library only):
+
+```bash
+python3 -I tools/probe.py --cred /path/to/cred.yml --categories activity,weight
+```
+
+`cred.yml` holds `- ClientID: <App ID>` and `  Secret: <App secret>`. Open the printed URL, sign in,
+then copy the `https://my.home-assistant.io/redirect/oauth?code=...` URL from the address bar
+(without clicking *Open link*) and paste it. The script tests the token exchange and refresh, calls
+`dailyPolymerize` for each data type and writes the redacted responses (no token, user or device
+identifier) to `probe-output/<timestamp>/`.
+
 ## Privacy
 
 The integration runs entirely in your Home Assistant: data goes from Huawei's cloud to your

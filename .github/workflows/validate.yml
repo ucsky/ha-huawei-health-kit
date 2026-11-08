@@ -20,6 +20,8 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
+          # Not in home-assistant/brands yet (brand icon: see TODO.md).
+          ignore: brands
   secrets:
     runs-on: ubuntu-latest
     steps:
