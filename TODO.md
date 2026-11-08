@@ -13,6 +13,9 @@
 - [ ] HTTP 403 for a whole request vs per data type: confirm the per-type fallback.
 - [x] Publish the privacy policy and user agreement at public URLs (needed in the Health Kit
       application): GitHub Pages or make the repo public.
+- [ ] Contact e-mail in the privacy policy and user agreement (Huawei may ask for one): create a
+      dedicated address (e.g. a new Gmail account), then add it to both documents (section 9 /
+      item 12) next to the GitHub issues link.
 - [ ] Options flow (change categories, history start date), diagnostics, repair issue when data
       sharing is not enabled in the HUAWEI Health app.
 - [x] Before making the repo public: enable GitHub secret scanning + push protection (not available on private personal repos), re-run `trufflehog git file://. --no-update` on the whole history.
