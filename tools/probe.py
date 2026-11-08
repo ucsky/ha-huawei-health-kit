@@ -121,7 +121,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--cred", type=Path, required=True, help="cred.yml with ClientID and Secret")
     ap.add_argument("--categories", default="activity,weight",
-                    help=f"comma-separated, among {','.join(hk.CATEGORIES)} (default: activity,weight)")
+                    help=f"comma-separated, among {','.join(hk.CATEGORIES)} (default: activity,weight); "
+                         "an empty string tests the HUAWEI ID sign-in only")
     ap.add_argument("--tz", default="Europe/Paris")
     ap.add_argument("--out", type=Path, default=ROOT / "probe-output")
     args = ap.parse_args()
@@ -196,6 +197,10 @@ def main() -> None:
         return status, meta, data
 
     metrics = hk.metrics_for(categories)
+    if not metrics:  # --categories "": HUAWEI ID sign-in only (works before Health Kit approval)
+        (out / "summary.md").write_text("\n".join(summary) + "\n")
+        print(f"\nSign-in only, done: {out}\nSend summary.md (no token or identifier inside).")
+        return
     today = datetime.now(tz).date()
     calls = [(t, today - timedelta(days=6), today, "last 7 days") for t in hk.data_types(metrics)]
     first = hk.data_types(metrics)[0]

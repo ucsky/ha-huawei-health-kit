@@ -74,7 +74,8 @@ python3 -I tools/probe.py --cred /path/to/cred.yml --categories activity,weight
 then copy the `https://my.home-assistant.io/redirect/oauth?code=...` URL from the address bar
 (without clicking *Open link*) and paste it. The script tests the token exchange and refresh, calls
 `dailyPolymerize` for each data type and writes the redacted responses (no token, user or device
-identifier) to `probe-output/<timestamp>/`.
+identifier) to `probe-output/<timestamp>/`. `--categories ""` tests the HUAWEI ID sign-in only
+(token exchange and refresh), which works before the Health Kit application is approved.
 
 ## Privacy
 
