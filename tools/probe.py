@@ -15,8 +15,10 @@ cred.yml (same format as the other sira credentials):
 
 Flow:
  1. the script prints the HUAWEI authorization URL: open it, sign in, accept;
- 2. the browser lands on https://my.home-assistant.io/redirect/oauth?code=...: do NOT click
-    "Open link", copy the whole URL from the address bar and paste it into the script;
+ 2. the browser lands on https://my.home-assistant.io/redirect/oauth?code=... (or on your Home
+    Assistant, which answers "Invalid state": expected): copy the address (Ctrl+L, Ctrl+C). The
+    script polls the clipboard (xclip, xsel or wl-paste) and exchanges the code at once: Huawei's
+    code expires within seconds. Without a clipboard tool, paste the URL into the script;
  3. the script exchanges the code, tests the refresh token, calls the API and writes
     probe-output/<timestamp>/ (summary.md, one JSON file per call).
 
@@ -32,7 +34,10 @@ import importlib.util
 import json
 import re
 import secrets
+import shutil
+import subprocess
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -67,6 +72,31 @@ def http(method: str, url: str, *, data: bytes | None = None, headers: dict | No
             return r.status, dict(r.headers), r.read().decode()
     except urllib.error.HTTPError as e:
         return e.code, dict(e.headers), e.read().decode()
+
+
+def clipboard_reader() -> list[str] | None:
+    """Command printing the clipboard (X11 or Wayland), or None."""
+    for cmd in (["wl-paste", "--no-newline"], ["xclip", "-selection", "clipboard", "-o"], ["xsel", "-bo"]):
+        if shutil.which(cmd[0]):
+            return cmd
+    return None
+
+
+def wait_for_code(cmd: list[str], state: str) -> str:
+    """Poll the clipboard until it holds a URL with code= and our state (Ctrl+C: type it instead)."""
+    try:
+        while True:
+            try:
+                text = subprocess.run(cmd, capture_output=True, text=True, timeout=2).stdout.strip()
+            except (OSError, subprocess.TimeoutExpired):
+                text = ""
+            query = urllib.parse.parse_qs(urllib.parse.urlparse(text).query)
+            if query.get("state") == [state] and ("code" in query or "error" in query):
+                print("URL found in the clipboard.")
+                return text
+            time.sleep(0.3)
+    except KeyboardInterrupt:
+        return input("\nURL> ").strip()
 
 
 def token_request(fields: dict) -> tuple[int, dict]:
@@ -147,9 +177,15 @@ def main() -> None:
         "scope": " ".join(scopes), "access_type": "offline", "state": state,
     })
     print("\n1. Open this URL, sign in with your HUAWEI ID and accept:\n\n" + url + "\n")
-    print("2. On the my.home-assistant.io page, do NOT click 'Open link'.")
-    print("   Copy the whole URL from the address bar and paste it here.\n")
-    pasted = input("URL> ").strip()
+    clip = clipboard_reader()
+    if clip:
+        print("2. As soon as the browser leaves HUAWEI (my.home-assistant.io or your Home Assistant page),")
+        print("   copy its address: Ctrl+L then Ctrl+C. The script reads the clipboard by itself")
+        print("   (the code expires within seconds). Ctrl+C here to paste by hand instead.\n")
+        pasted = wait_for_code(clip, state)
+    else:
+        print("2. Copy the address of the page the browser lands on after HUAWEI and paste it here.\n")
+        pasted = input("URL> ").strip()
     query = urllib.parse.parse_qs(urllib.parse.urlparse(pasted).query)
     if "error" in query:
         sys.exit(f"authorization refused: {query}")
