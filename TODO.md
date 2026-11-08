@@ -5,7 +5,11 @@
       distance, calories, height/weight read), status "To be reviewed" (about 10 working days).
       Check that the application material (docs list) is attached; the upload failed with
       "Internal service exception".
-- [ ] First live test with `tools/probe.py` (see README): OAuth flow (scopes, `access_type=offline`, id_token `sub`), token refresh.
+- [x] HUAWEI ID OAuth checked live on 2026-11-08 (`tools/probe.py --categories ""`): token exchange
+      OK, `access_type=offline` gives a refresh token, id_token has `sub`, access token valid 3600 s,
+      refresh OK but returns no new refresh token (Home Assistant keeps the old one). The
+      authorization code expires within seconds: the redirect must not wait for a click.
+- [ ] First live test of the Health Kit scopes with `tools/probe.py` once the application is approved.
 - [ ] Check real `dailyPolymerize` responses for each data type: field names (SpO2
       `saturation_avg`, stress/resting HR `avg`), units, several sample points per day.
 - [ ] Sleep: check which day a night is attributed to (night ending on day D?) and whether
