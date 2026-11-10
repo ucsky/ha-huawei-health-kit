@@ -25,7 +25,9 @@ MAX_DATA_TYPES = 20
 SCOPE_PREFIX = "https://www.huawei.com/healthkit/"
 
 # Data categories the user can pick at setup -> Health Kit read scopes.
-# "restricted" categories need a manual review by Huawei (lock icon in the console).
+# Huawei refuses every category except "activity" to individual developer accounts: health data
+# (height/weight, heart rate, sleep, stress, SpO2, body temperature) is only granted to
+# enterprise accounts (Health Kit application rejected for this reason on 2026-11-09).
 CATEGORIES: dict[str, tuple[str, ...]] = {
     "activity": ("step.read", "distance.read", "calories.read"),
     "weight": ("heightweight.read",),
@@ -35,8 +37,8 @@ CATEGORIES: dict[str, tuple[str, ...]] = {
     "spo2": ("oxygensaturation.read",),
     "body_temperature": ("bodytemperature.read",),
 }
-RESTRICTED_CATEGORIES = {"heart_rate", "sleep", "stress", "spo2", "body_temperature"}
-DEFAULT_CATEGORIES = ("activity", "weight", "heart_rate", "sleep")
+ENTERPRISE_ONLY_CATEGORIES = frozenset(CATEGORIES) - {"activity"}
+DEFAULT_CATEGORIES = ("activity",)
 
 
 @dataclass(frozen=True, slots=True)

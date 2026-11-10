@@ -6,7 +6,7 @@
     "step": {
       "user": {
         "title": "Data to read",
-        "description": "Only pick what your Huawei Developers app was granted: a category whose scope was not granted is ignored.",
+        "description": "Huawei only grants activity data (steps, distance, calories) to individual developer accounts. The other categories need a Huawei Developers enterprise account. A category whose scope your app was not granted is ignored.",
         "data": {
           "categories": "Categories"
         }
@@ -41,12 +41,12 @@
     "categories": {
       "options": {
         "activity": "Activity (steps, distance, calories)",
-        "weight": "Weight",
-        "heart_rate": "Heart rate (restricted)",
-        "sleep": "Sleep (restricted)",
-        "stress": "Stress (restricted)",
-        "spo2": "SpO2 (restricted)",
-        "body_temperature": "Body temperature (restricted)"
+        "weight": "Weight (enterprise accounts only)",
+        "heart_rate": "Heart rate (enterprise accounts only)",
+        "sleep": "Sleep (enterprise accounts only)",
+        "stress": "Stress (enterprise accounts only)",
+        "spo2": "SpO2 (enterprise accounts only)",
+        "body_temperature": "Body temperature (enterprise accounts only)"
       }
     }
   },

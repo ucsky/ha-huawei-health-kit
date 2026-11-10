@@ -6,7 +6,7 @@ raw responses (redacted) so the parsing in healthkit.py can be checked against r
 
 Standard library only. Usage:
 
-    python3 -I tools/probe.py --cred /path/to/cred.yml [--categories activity,weight]
+    python3 -I tools/probe.py --cred /path/to/cred.yml [--categories activity]
 
 cred.yml (same format as the other sira credentials):
 
@@ -150,8 +150,8 @@ def redact(obj):
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--cred", type=Path, required=True, help="cred.yml with ClientID and Secret")
-    ap.add_argument("--categories", default="activity,weight",
-                    help=f"comma-separated, among {','.join(hk.CATEGORIES)} (default: activity,weight); "
+    ap.add_argument("--categories", default="activity",
+                    help=f"comma-separated, among {','.join(hk.CATEGORIES)} (default: activity); "
                          "an empty string tests the HUAWEI ID sign-in only")
     ap.add_argument("--tz", default="Europe/Paris")
     ap.add_argument("--out", type=Path, default=ROOT / "probe-output")

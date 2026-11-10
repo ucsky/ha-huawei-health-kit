@@ -28,15 +28,25 @@ app. This one only uses the documented, official API:
 
 ## Data
 
-| Category | Sensors | Health Kit scope | Huawei review |
+> [!WARNING]
+> **Huawei refuses health data to individual developers.** With an individual HUAWEI Developers
+> account, Huawei only grants the *Activity* category (steps, distance, calories). Weight, heart
+> rate, sleep, stress, SpO2 and body temperature are reserved for **enterprise** accounts (a
+> registered company): the author's application was rejected for exactly this reason
+> ("Individual developers cannot apply for health-related data"). The code for these categories
+> is kept, but untested, for anyone who has an enterprise account. To get this data into Home
+> Assistant as an individual, you need another route, such as a phone app that copies
+> HUAWEI Health data to another service.
+
+| Category | Sensors | Health Kit scope | Individual account |
 |---|---|---|---|
-| Activity | steps, distance, calories (daily totals) | `step.read`, `distance.read`, `calories.read` | automatic |
-| Weight | weight (daily mean/min/max) | `heightweight.read` | automatic |
-| Heart rate | heart rate, resting heart rate | `heartrate.read` | manual |
-| Sleep | total, deep, light, REM, awake (min), wake-ups | `sleep.read` | manual |
-| Stress | stress score | `stress.read` | manual |
-| SpO2 | blood oxygen | `oxygensaturation.read` | manual |
-| Body temperature | body temperature | `bodytemperature.read` | manual |
+| Activity | steps, distance, calories (daily totals) | `step.read`, `distance.read`, `calories.read` | yes |
+| Weight | weight (daily mean/min/max) | `heightweight.read` | no (enterprise only) |
+| Heart rate | heart rate, resting heart rate | `heartrate.read` | no (enterprise only) |
+| Sleep | total, deep, light, REM, awake (min), wake-ups | `sleep.read` | no (enterprise only) |
+| Stress | stress score | `stress.read` | no (enterprise only) |
+| SpO2 | blood oxygen | `oxygensaturation.read` | no (enterprise only) |
+| Body temperature | body temperature | `bodytemperature.read` | no (enterprise only) |
 
 Values are read every 30 minutes (last 7 days, to catch late syncs from the watch). At first
 start, the history is backfilled in the background, 30 days per request.
@@ -52,9 +62,12 @@ the app is only used by you, and Health Kit's *test permission* allows up to 100
    **App ID** (client ID) and **App secret** (client secret).
 3. **HUAWEI ID / OAuth**: enable the HUAWEI ID service and add the redirect URL
    `https://my.home-assistant.io/redirect/oauth`.
-4. **Health Kit**: *Console → App services → Health Kit → Apply for Health Kit*, select only the
-   read permissions you need (see the table) and fill in the application form. Restricted data
-   (lock icon) is reviewed manually (about 15 working days). Wait 24 h after approval.
+4. **Health Kit**: *Console → App services → Health Kit → Apply for Health Kit*. With an individual
+   account, tick only the steps, distance and calories read permissions; any health-data box
+   gets the whole application rejected. Give **one scenario and purpose per permission** (none
+   blank, no permission sharing a scenario), and leave unticked: authorization without login,
+   HarmonyOS Connect device information, nutrition data, personal score reports and fitness
+   capabilities. The review takes about 10 to 15 working days. Wait 24 h after approval.
 5. **HUAWEI Health app**: allow data sharing with your app when asked (or in *Me → Privacy
    management → Data sharing and authorization*).
 6. **Home Assistant**: install with HACS (custom repository
@@ -67,7 +80,7 @@ the app is only used by you, and Health Kit's *test permission* allows up to 100
 `tools/probe.py` checks the Health Kit API outside Home Assistant (standard library only):
 
 ```bash
-python3 -I tools/probe.py --cred /path/to/cred.yml --categories activity,weight
+python3 -I tools/probe.py --cred /path/to/cred.yml --categories activity
 ```
 
 `cred.yml` holds `- ClientID: <App ID>` and `  Secret: <App secret>`. Open the printed URL, sign in,

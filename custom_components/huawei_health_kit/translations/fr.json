@@ -6,7 +6,7 @@
     "step": {
       "user": {
         "title": "Données à lire",
-        "description": "Ne choisissez que ce que votre app HUAWEI Developers a obtenu : une catégorie dont le scope n'a pas été accordé est ignorée.",
+        "description": "Huawei n'accorde que les données d'activité (pas, distance, calories) aux comptes développeur individuels. Les autres catégories demandent un compte entreprise HUAWEI Developers. Une catégorie dont le scope n'a pas été accordé à votre app est ignorée.",
         "data": {
           "categories": "Catégories"
         }
@@ -41,12 +41,12 @@
     "categories": {
       "options": {
         "activity": "Activité (pas, distance, calories)",
-        "weight": "Poids",
-        "heart_rate": "Fréquence cardiaque (soumis à validation)",
-        "sleep": "Sommeil (soumis à validation)",
-        "stress": "Stress (soumis à validation)",
-        "spo2": "SpO2 (soumis à validation)",
-        "body_temperature": "Température corporelle (soumis à validation)"
+        "weight": "Poids (comptes entreprise uniquement)",
+        "heart_rate": "Fréquence cardiaque (comptes entreprise uniquement)",
+        "sleep": "Sommeil (comptes entreprise uniquement)",
+        "stress": "Stress (comptes entreprise uniquement)",
+        "spo2": "SpO2 (comptes entreprise uniquement)",
+        "body_temperature": "Température corporelle (comptes entreprise uniquement)"
       }
     }
   },
