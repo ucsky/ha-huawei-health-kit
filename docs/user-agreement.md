@@ -1,9 +1,9 @@
-# User Agreement: Huawei Health (Health Kit) for Home Assistant
+# User Agreement: HA Activity Bridge
 
-*Last updated: 2026-11-08*
+*Last updated: 2026-11-14*
 
-By installing or using "Huawei Health (Health Kit) for Home Assistant" (the "Integration",
-<https://github.com/ucsky/ha-huawei-health-kit>), you agree to this agreement.
+By installing or using "HA Activity Bridge" (the "Integration",
+<https://github.com/ucsky/ha-activity-bridge>), you agree to this agreement.
 
 1. **Software.** The Integration is free and open-source software, distributed under the
    [MIT license](../LICENSE), that you install on your own Home Assistant instance. The MIT
@@ -39,4 +39,4 @@ By installing or using "Huawei Health (Health Kit) for Home Assistant" (the "Int
     agreement limits rights that cannot be limited under applicable consumer law.
 11. **Changes.** This agreement may be updated in this repository, with the date above updated.
     Continued use after an update means acceptance of the new version.
-12. **Contact.** <https://github.com/ucsky/ha-huawei-health-kit/issues>.
+12. **Contact.** <https://github.com/ucsky/ha-activity-bridge/issues>.

@@ -14,5 +14,5 @@ async def async_get_description_placeholders(hass: HomeAssistant) -> dict[str, s
     return {
         "console_url": "https://developer.huawei.com/consumer/en/console",
         "redirect_url": "https://my.home-assistant.io/redirect/oauth",
-        "docs_url": "https://github.com/ucsky/ha-huawei-health-kit#setup",
+        "docs_url": "https://github.com/ucsky/ha-activity-bridge#setup",
     }

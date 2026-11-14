@@ -1,4 +1,6 @@
-# Huawei Health (Health Kit) for Home Assistant
+# HA Activity Bridge
+
+*HUAWEI Health activity data in Home Assistant, through the official Health Kit API.*
 
 Custom integration that reads your **HUAWEI Health** data (watch, band, scale) through Huawei's
 **official Health Kit cloud API** and brings it into Home Assistant:
@@ -59,7 +61,8 @@ the app is only used by you, and Health Kit's *test permission* allows up to 100
 1. **HUAWEI Developers account**: sign in at <https://developer.huawei.com> with the HUAWEI ID of
    your HUAWEI Health app and complete the identity verification (individual).
 2. **Project and app**: in *AppGallery Connect*, create a project and an app, then note the
-   **App ID** (client ID) and **App secret** (client secret).
+   **App ID** (client ID) and **App secret** (client secret). The app name must not contain
+   "Huawei" (Health Kit rejects the application otherwise).
 3. **HUAWEI ID / OAuth**: enable the HUAWEI ID service and add the redirect URL
    `https://my.home-assistant.io/redirect/oauth`.
 4. **Health Kit**: *Console → App services → Health Kit → Apply for Health Kit*. With an individual
@@ -71,8 +74,8 @@ the app is only used by you, and Health Kit's *test permission* allows up to 100
 5. **HUAWEI Health app**: allow data sharing with your app when asked (or in *Me → Privacy
    management → Data sharing and authorization*).
 6. **Home Assistant**: install with HACS (custom repository
-   `https://github.com/ucsky/ha-huawei-health-kit`, category *Integration*), restart, then
-   *Settings → Devices & services → Add integration → Huawei Health (Health Kit)*. Enter the App
+   `https://github.com/ucsky/ha-activity-bridge`, category *Integration*), restart, then
+   *Settings → Devices & services → Add integration → HA Activity Bridge*. Enter the App
    ID and App secret, pick the categories, and sign in with your HUAWEI ID.
 
 ## Testing against the live API (developers)

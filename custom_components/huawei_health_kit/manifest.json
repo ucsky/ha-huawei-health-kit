@@ -1,13 +1,13 @@
 {
   "domain": "huawei_health_kit",
-  "name": "Huawei Health (Health Kit)",
+  "name": "HA Activity Bridge",
   "codeowners": ["@ucsky"],
   "config_flow": true,
   "dependencies": ["application_credentials", "recorder"],
-  "documentation": "https://github.com/ucsky/ha-huawei-health-kit",
+  "documentation": "https://github.com/ucsky/ha-activity-bridge",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/ucsky/ha-huawei-health-kit/issues",
+  "issue_tracker": "https://github.com/ucsky/ha-activity-bridge/issues",
   "requirements": [],
   "version": "0.1.0"
 }

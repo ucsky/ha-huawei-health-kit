@@ -1,9 +1,9 @@
-# Privacy Policy: Huawei Health (Health Kit) for Home Assistant
+# Privacy Policy: HA Activity Bridge
 
-*Last updated: 2026-11-08*
+*Last updated: 2026-11-14*
 
-This policy describes how the open-source software "Huawei Health (Health Kit) for Home Assistant"
-(the "Integration", <https://github.com/ucsky/ha-huawei-health-kit>) handles your data.
+This policy describes how the open-source software "HA Activity Bridge"
+(the "Integration", <https://github.com/ucsky/ha-activity-bridge>) handles your data.
 
 ## 1. Who processes your data
 
@@ -89,7 +89,7 @@ Changes to this policy are published in this repository, with the date above upd
 history is available in the repository's commit log.
 
 Questions about the Integration or this policy:
-<https://github.com/ucsky/ha-huawei-health-kit/issues>.
+<https://github.com/ucsky/ha-activity-bridge/issues>.
 
 *HUAWEI and HUAWEI Health are trademarks of Huawei Technologies Co., Ltd. The Integration is not
 affiliated with or endorsed by HUAWEI.*

@@ -7,7 +7,11 @@
       out of reach for this project (no company will be created for it).
 - [ ] Health Kit application resubmitted on 2026-11-10: steps, distance and calories read only,
       one scenario/purpose per permission, application material v2 (activity only). Waiting for
-      the review (about 10 working days).
+      the review (about 10 working days). **Rejected again** (notice of 2026-11-14): "The application name
+      cannot contain the word Huawei".
+- [ ] Rename to "HA Activity Bridge" (repo renamed to ucsky/ha-activity-bridge on 2026-11-14,
+      docs and material v3 updated), rename the app in AppGallery Connect, resubmit with
+      material v3.
 - [x] HUAWEI ID OAuth checked live on 2026-11-08 (`tools/probe.py --categories ""`): token exchange
       OK, `access_type=offline` gives a refresh token, id_token has `sub`, access token valid 3600 s,
       refresh OK but returns no new refresh token (Home Assistant keeps the old one). The

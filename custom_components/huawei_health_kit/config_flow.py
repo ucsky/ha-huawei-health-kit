@@ -85,4 +85,4 @@ class OAuth2FlowHandler(config_entry_oauth2_flow.AbstractOAuth2FlowHandler, doma
             self._abort_if_unique_id_mismatch(reason="wrong_account")
             return self.async_update_reload_and_abort(self._get_reauth_entry(), data_updates=data)
         self._abort_if_unique_id_configured()
-        return self.async_create_entry(title="Huawei Health", data=data)
+        return self.async_create_entry(title="HA Activity Bridge", data=data)

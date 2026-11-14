@@ -53,7 +53,7 @@ sys.modules["healthkit"] = hk
 _spec.loader.exec_module(hk)
 
 REDIRECT_URI = "https://my.home-assistant.io/redirect/oauth"
-X_VERSION = "ha_huawei_health_kit_probe"
+X_VERSION = "ha_activity_bridge_probe"
 
 
 def read_cred(path: Path) -> tuple[str, str]:

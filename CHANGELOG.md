@@ -10,3 +10,5 @@
 - Privacy policy and user agreement completed for the Health Service Kit application.
 - Only *Activity* is selected by default. The other categories are marked "enterprise accounts
   only": Huawei refuses health data to individual developer accounts.
+- Renamed to **HA Activity Bridge** (repository `ucsky/ha-activity-bridge`): Health Kit rejects
+  application names containing "Huawei". The integration domain stays `huawei_health_kit`.
